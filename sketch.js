@@ -6,7 +6,7 @@ let t = 0;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    frameRate(60);
+    frameRate(100);
     initializeLines();
 
 }
@@ -28,15 +28,47 @@ function windowResized() {
     initializeLines();
 }
 
+function mouseMoved() {
+    speed = map(mouseX, 0, width, 0, 20);
+    numLines = int(map(mouseY, 0, height, 0, 200));
+    initializeLines();
+
+
+}
+
 function draw() {
+    background(252);
+    // for (let i = 0; i < width; i++) {
+    //     translate(i / 10, 0);
+    // }
+    //mouseMoved();
     //translate(-width / 2, -height / 2);
     //rotateZ(PI / 2);
-
+    //noStroke();
+    //fill(255, 10, 10);
+    noFill();
+    strokeWeight(1);
+    //rotate(TAU / 4 * frameCount / 100);
+    //translate(width / 2, height / 2);
+    //push();
+    //rotateY(TAU / 4 * frameCount / 1000);
+    // ellipse(width / 1.2, height / 4 + 10, 250, 1);
+    // ellipse(width / 1.2, height / 4 + 50, 200, 2);
+    // ellipse(width / 1.2, height / 4 + 90, 150, 1);
+    // ellipse(width / 1.2, height / 4 + 130, 100, 2);
+    // ellipse(width / 1.2, height / 4 + 170, 75, 1);
+    // ellipse(width / 1.2, height / 4 + 210, 50, 2);
+    // ellipse(width / 1.2, height / 4 + 250, 75, 1);
+    // ellipse(width / 1.2, height / 4 + 290, 100, 2);
+    // ellipse(width / 1.2, height / 4 + 330, 150, 1);
+    // ellipse(width / 1.2, height / 4 + 370, 200, 2);
+    // ellipse(width / 1.2, height / 4 + 410, 250, 1);
+    //pop();
     strokeWeight(t * 2);
     t += .00025;
     //background(W, 64);
     noStroke();
-    background(252);
+
     for (r = 1; r < TAU * 20; r += 0.2) {
         push() + translate(cos(r) * r * 9 + 360, sin(r) * r * 9 + 360 + (T = tan(r / 20 - t * 9) * 5))
             + fill(0, -T * 99) + rotate(r * 100)
@@ -97,6 +129,7 @@ function draw() {
     fill(250, 250, 250);
     text("Amāra", width / 2 + 5, 80);
     fill(255);
+    rotate(sin(60));
     text("purpose-driven streetwear.", width / 2, 255);
     fill(255);
 
