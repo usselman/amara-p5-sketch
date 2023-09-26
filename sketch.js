@@ -22,7 +22,7 @@ function setup() {
 function draw() {
 
     strokeWeight(t * 2);
-    t += .0001;
+    t += .00025;
     //background(W, 64);
     noStroke();
     background(252);
@@ -31,7 +31,7 @@ function draw() {
             + fill(0, -T * 99) + rotate(r * 100)
             + textSize(int(r) * 0.25)
             // + line(0, 0, 9 / T, 9 / T)
-            + ellipse(0, 0, 9 / T, 9 / T)
+            + ellipse(0, 0, 9 / T + r, 9 / T)
             // + text(String.fromCodePoint(0 + int(r * 1 % 1164)), -T, 9 / T)
             + pop();
     }
