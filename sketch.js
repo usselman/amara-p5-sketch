@@ -29,9 +29,9 @@ function windowResized() {
 }
 
 function mouseMoved() {
-    speed = map(mouseX, 0, width, 0, 20);
-    numLines = int(map(mouseY, 0, height, 0, 200));
-    initializeLines();
+    //speed = map(mouseX, 0, width, 0, 20);
+    //numLines = int(map(mouseY, 0, height, 0, 200));
+    //initializeLines();
 
 
 }
@@ -68,15 +68,39 @@ function draw() {
     t += .00025;
     //background(W, 64);
     noStroke();
+    if (mouseX > width / 2) {
+        for (r = 1; r < TAU * 20; r += 0.2) {
+            push() + translate(cos(r) * 2 * r + 360, sin(r) * r * 2 + 360 + (T = tan(r / 20 - t) * 5))
+                // + fill(0, -T * 99) 
+                + fill(185, 150, 150);
+            + rotate(PI)
+                + textSize(int(r) * 0.15)
+                + stroke(0)
+                + strokeWeight(1 - t)
+                + line(0, 0, 9 / T, 9 / T)
+                //+ ellipse(0, 0, 9 / T + r, 9 / T)
+                //+ text(String.fromCodePoint(110000 + int(r * 1 % 1164)), -T, 9 / T)
+                + pop();
+        }
+    }
+    if (mouseX < width / 2) {
+        for (r = 10; r < TAU * 20; r += 0.2) {
 
-    for (r = 1; r < TAU * 20; r += 0.2) {
-        push() + translate(cos(r) * r * 9 + 360, sin(r) * r * 9 + 360 + (T = tan(r / 20 - t * 9) * 5))
-            + fill(0, -T * 99) + rotate(r * 100)
-            + textSize(int(r) * 0.45)
-            // + line(0, 0, 9 / T, 9 / T)
-            //+ ellipse(0, 0, 9 / T + r, 9 / T)
-            + text(String.fromCodePoint(0 + int(r * 1 % 1164)), -T, 9 / T)
-            + pop();
+            push()
+                + translate(width / 2, height / 4)
+                + translate(cos(r) * 2 * r + 360, sin(r) * r * 2 + 360 + (T = tan(r / 50 - t) * 5))
+                // + fill(0, -T * 99) 
+                + fill(185, 150, 150)
+                + rotate(PI)
+                + textSize(int(r) * 0.15)
+                + stroke(0)
+                + strokeWeight(1 - t)
+                + noFill()
+                + ellipse(0, 0, T / 50, 9 / 25)
+                //+ ellipse(0, 0, 9 / T + r, 9 / T)
+                //+ text(String.fromCodePoint(110000 + int(r * 1 % 1164)), -T, 9 / T)
+                + pop();
+        }
     }
     fill(0);
 
@@ -98,7 +122,7 @@ function draw() {
         line(120, 0, 120, height);
         line(200, 0, 200, height);
     }
-    rotate(cos(45));
+    //rotate(cos(45));
 
     // Draw and move horizontal lines
     for (let i = 0; i < horizontalLinesY.length; i += (2.8)) {
@@ -117,7 +141,7 @@ function draw() {
         } else if (horizontalLinesY[i] < 0) {
             horizontalLinesY[i] = height;
         }
-        line(0, 100, width, 100);
+        //line(0, 100, width, 100);
         strokeWeight(5);
         line(0, 120, width, 120);
     }
@@ -129,8 +153,8 @@ function draw() {
     fill(250, 250, 250);
     text("Amāra", width / 2 + 5, 80);
     fill(255);
-    rotate(sin(60));
-    text("purpose-driven streetwear.", width / 2, 255);
+    //rotate(sin(60));
+    text("purpose-driven streetwear.", width / 2, 225);
     fill(255);
 
 
