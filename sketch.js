@@ -1,13 +1,16 @@
 let verticalLinesX = [];
 let horizontalLinesY = [];
-let numLines = 25;
+let numLines = 100;
 let speed = 1;
 let t = 0;
 
 function setup() {
-    createCanvas(innerWidth, innerHeight);
+    createCanvas(windowWidth, windowHeight);
     frameRate(24);
+    initializeLines();
+}
 
+function initializeLines() {
     // Initialize vertical lines
     for (let i = 0; i < numLines; i++) {
         verticalLinesX[i] = i * width / numLines;
@@ -17,6 +20,11 @@ function setup() {
     for (let i = 0; i < numLines; i++) {
         horizontalLinesY[i] = i * height / numLines;
     }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    initializeLines();
 }
 
 function draw() {
@@ -31,13 +39,11 @@ function draw() {
             + fill(0, -T * 99) + rotate(r * 100)
             + textSize(int(r) * 0.25)
             // + line(0, 0, 9 / T, 9 / T)
-            + ellipse(0, 0, 9 / T + r, 9 / T)
-            // + text(String.fromCodePoint(0 + int(r * 1 % 1164)), -T, 9 / T)
+            //+ ellipse(0, 0, 9 / T + r, 9 / T)
+            + text(String.fromCodePoint(0 + int(r * 1 % 1164)), -T, 9 / T)
             + pop();
     }
     fill(0);
-    //ellipse(random(width * 2), random(height * 2), 10, 10);
-
 
     // Draw and move vertical lines
     stroke(0);
@@ -67,7 +73,7 @@ function draw() {
         //fill(150, 75, 50);
         fill(255);
         //stroke(0);
-        text("purpose-driven streetwear.", width / 2 + 5 * i * 0.25, 250);
+        // text("purpose-driven streetwear.", width / 2 + 5 * i * 0.25, 250);
 
         // Reset line position when it goes out of canvas
         if (horizontalLinesY[i] > height) {
@@ -81,13 +87,13 @@ function draw() {
     }
 
     fill(150, 50, 50);
-    textSize(72);
+    textSize(width / 25);
     textAlign(CENTER);
     text("Amāra", width / 2, 80);
     fill(250, 250, 250);
     text("Amāra", width / 2 + 5, 80);
-    fill(0);
-    //text("purpose-driven streetwear.", width / 2, height / 2 + 55);
+    fill(255);
+    text("purpose-driven streetwear.", width / 2, 255);
     fill(255);
 
 
