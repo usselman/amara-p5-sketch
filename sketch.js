@@ -6,8 +6,9 @@ let t = 0;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    frameRate(24);
+    frameRate(60);
     initializeLines();
+
 }
 
 function initializeLines() {
@@ -28,6 +29,8 @@ function windowResized() {
 }
 
 function draw() {
+    //translate(-width / 2, -height / 2);
+    //rotateZ(PI / 2);
 
     strokeWeight(t * 2);
     t += .00025;
@@ -37,7 +40,7 @@ function draw() {
     for (r = 1; r < TAU * 20; r += 0.2) {
         push() + translate(cos(r) * r * 9 + 360, sin(r) * r * 9 + 360 + (T = tan(r / 20 - t * 9) * 5))
             + fill(0, -T * 99) + rotate(r * 100)
-            + textSize(int(r) * 0.25)
+            + textSize(int(r) * 0.45)
             // + line(0, 0, 9 / T, 9 / T)
             //+ ellipse(0, 0, 9 / T + r, 9 / T)
             + text(String.fromCodePoint(0 + int(r * 1 % 1164)), -T, 9 / T)
@@ -63,10 +66,11 @@ function draw() {
         line(120, 0, 120, height);
         line(200, 0, 200, height);
     }
+    rotate(cos(45));
 
     // Draw and move horizontal lines
     for (let i = 0; i < horizontalLinesY.length; i += (2.8)) {
-        strokeWeight(i / 8);
+        strokeWeight(i / 18);
         line(0, horizontalLinesY[i], width / 4, horizontalLinesY[i]);
         horizontalLinesY[i] -= speed / 10;
         //noFill();
